@@ -1,0 +1,192 @@
+/*全局配置*/
+html,body{height:100%;}
+*{
+	list-style: none;
+	padding:0;
+	margin:0;
+	font-family: STHeiti;
+}
+a{
+	text-decoration: none;
+}
+a:visited{
+	color:#ddd;
+}
+
+/*导航栏动画*/
+@-webkit-keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.fadeInRight {
+  	-webkit-animation-name: fadeInRight;
+  	animation-name: fadeInRight;
+  	-moz-animation-name: fadeInRight;
+	-o-animation-name: fadeInRight;
+}
+.fadeInRight {
+    -webkit-animation:fadeInRight  1s forwards;
+    animation:fadeInRight  1s forwards;
+    -webkit-animation-name: fadeInRight;
+    animation-name: fadeInRight;
+}
+
+/*导航栏消失*/
+@-webkit-keyframes fadeOutRight {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+@keyframes fadeOutRight {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+.fadeOutRight {
+  -webkit-animation-name: fadeOutRight;
+  animation-name: fadeOutRight;
+  	-moz-animation-name: fadeOutRight;
+	-o-animation-name: fadeOutRight;
+	
+}
+
+.fadeOutRight {
+    -webkit-animation:fadeOutRight  1s forwards;
+    animation:fadeOutRight  1s forwards;
+    -webkit-animation-name: fadeOutRight;
+    animation-name: fadeOutRight;
+}
+
+/*导航栏*/
+.nav{
+	width:280px;
+	background-color: #77cccf;
+	height:720px;
+	position: absolute;
+	right:0px;
+	top: 40px;
+	opacity: 0;
+}
+.nav ul li{
+	line-height: 30px;
+	padding-bottom: 6px;
+	margin:10px 30px;
+	border-bottom: 1px dashed #dcd9d0;
+}
+.nav ul li:first-child{
+	margin-top: 30px;
+}
+.nav ul li:last-child{
+	border-bottom: none;
+}
+
+.nav ul a{
+	color:white;
+	font-size: 15px;
+}
+
+
+/*导航栏设计*/
+.bar{
+	position: fixed;
+	width:100%;
+	height:40px;
+	letter-spacing: 2px;
+	z-index: 5;
+}
+#hide-bar{
+	background-color: #5eb3d0;
+	opacity: 0;
+}
+.bar span, #menu span{
+	width: 46px;
+	color:white;
+	font-size: 20px;
+	padding: 10px 20px;
+	display: inline-block;
+}
+#menu{
+	position: fixed;
+	height:40px;
+	right:100px;
+	position: fixed;
+	opacity: 1;
+}
+#menu img{
+	width:24px;
+	position: absolute;
+	top:7px;
+	right:-40px;
+}
+
+/*第一页背景图*/
+.main-img{
+    width:100%;
+    height:100%;
+    z-index: -2;
+}
+
+/*第四屏footer设计*/
+.footer,.footer-2{
+	height:206px;
+	width:100%;
+	position: absolute;
+	bottom: 0;
+}
+.footer{
+	background: #182627;
+	opacity: .6;
+}
+.footer-2 img{
+	width: 40px;
+	height:40px;
+	padding: 20px;
+}
+.wrap-icons{
+	width:340px;
+	height:60px;
+	margin: 50px auto;
+}
+.design{
+	color:#fff;
+	font-size: 12px;
+	text-align: center;
+}
