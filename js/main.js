@@ -60,20 +60,21 @@ function toggleClass(obj,cls){
 
 //首屏下拉
 
+function wheelPrevent(event) { 
+    event.preventDefault()
+}
+
 function getwheel(){
-    function mousewheelHandler(e){
-        var isScroll = false;
-        if(isScroll){
-            return
-        }        
+
+    function mousewheelHandler(e){    
         var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
         // console.log(delta > 0 ? "向上滚动" : "向下滚动");
-
         if(delta<0){
-            console.log('<0',delta)
-            isScroll = true;
+            console.log('<0',delta)       
             scroller('section2', 500)
-            console.log(isScroll)
+            document.body.addEventListener( 'mousewheel', wheelPrevent, false);
+            setTimeout(document.body.removeEventListener( 'mousewheel', wheelPrevent,false), 300)
+
         }
 
         // if(delta>0){
