@@ -62,25 +62,31 @@ function toggleClass(obj,cls){
 
 function getwheel(){
     function mousewheelHandler(e){
+        var isScroll = false;
+        if(isScroll){
+            return
+        }        
         var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
         // console.log(delta > 0 ? "向上滚动" : "向下滚动");
+
         if(delta<0){
             console.log('<0',delta)
-
-            console.log('下')
+            isScroll = true;
             scroller('section2', 500)
+            console.log(isScroll)
         }
-        if(delta>0){
-            console.log('>0',delta)
-            scroller('section1', 500)
-        }
+
+        // if(delta>0){
+        //     console.log('>0',delta)
+        //     scroller('section1', 500)
+        // }
     }
     if(window.navigator.userAgent.indexOf('Firefox')!=-1){
         oSection1.addEventListener("DOMMouseScroll", mousewheelHandler, false);
-        oSection2.addEventListener("DOMMouseScroll", mousewheelHandler, false);
+        // oSection2.addEventListener("DOMMouseScroll", mousewheelHandler, false);
         }else{
             oSection1.addEventListener("mousewheel", mousewheelHandler, false);
-            oSection2.addEventListener("mousewheel", mousewheelHandler, false);
+            // oSection2.addEventListener("mousewheel", mousewheelHandler, false);
 
     }
 }
