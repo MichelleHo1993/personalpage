@@ -1,13 +1,3 @@
-
-// var oMenu = document.getElementById('menu');
-// var oNav = document.getElementById('nav');
-// var className = oNav.getAttribute('class');
-
-// var zoomUl = document.getElementsByClassName('intro-cube');
-// var zoomUl_l = document.getElementById('intro-l');
-// var zoomUl_r = document.getElementById('intro-r');
-// var zoomCube = zoomUl_l.getElementsByTagName('li');
-// var zoomCube = zoomUl_r.getElementsByTagName('li');
 var oSection1 = document.getElementById("section1");
 var oSection2 = document.getElementById("section2");
 var oFlow1 = document.getElementById('s4-flow-1');

@@ -163,13 +163,28 @@
 }
 
 
+
 /*第二屏设计*/
 .section2{
 	// border-bottom: 2px solid white;
 }
+.music{
+	position: absolute;
+	width:50px;
+	height:25px;
+	background-image: url("img/music.png");
+}
+.music img{
+	width:100%;
+}
+.music-on{
+	background-position: 128px 72px;
+}
 
 #bg-2{
 	border-bottom: 2px solid white;
+	position: relative;
+
 }
 .bg-2{
 	z-index: 55;
