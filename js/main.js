@@ -17,6 +17,8 @@ var place_holder = document.getElementById("place_holder");
 var greetingsDiv = document.getElementById("greetings");
 var greetingsTop = greetingsDiv.offsetTop;
 
+var isScroll = false;//是否正在下拉
+
 function hasClass(obj, cls) {  
     return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
 }  
@@ -40,100 +42,31 @@ function toggleClass(obj,cls){
     }  
 }  
 
-// 控制菜单显示隐藏
-// oMenu.onclick = function (){
-// 	// oNav.setAttribute('class',className + ' show')
-// 	// toggleClass(oNav,'show')
-
-// 	if(hasClass(oNav,'fadeInRight')){
-// 		addClass(oNav,'fadeOutRight')
-// 		removeClass(oNav,'fadeInRight')
-// 	}
-// 	else{
-// 		removeClass(oNav,'fadeOutRight')
-// 		addClass(oNav,'fadeInRight')
-// 	}
-// }
-// document.body.onScroll
-// console.log(document.body.scrollHeight)
-// 菜单控制隐藏结束
 
 //首屏下拉
-
-function wheelPrevent(event) { 
-    event.preventDefault()
-}
-
-function getwheel(){
-
-    function mousewheelHandler(e){    
+ function mousewheelHandler(e){    
+    if(isScroll){return}
         var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
         // console.log(delta > 0 ? "向上滚动" : "向下滚动");
         if(delta<0){
             console.log('<0',delta)       
             scroller('section2', 500)
-            document.body.addEventListener( 'mousewheel', wheelPrevent, false);
-            setTimeout(document.body.removeEventListener( 'mousewheel', wheelPrevent,false), 300)
 
+        }else{
+            console.log('>0',delta)
+            scroller('section1', 500)
         }
-
-        // if(delta>0){
-        //     console.log('>0',delta)
-        //     scroller('section1', 500)
-        // }
     }
     if(window.navigator.userAgent.indexOf('Firefox')!=-1){
         oSection1.addEventListener("DOMMouseScroll", mousewheelHandler, false);
-        // oSection2.addEventListener("DOMMouseScroll", mousewheelHandler, false);
+        oSection2.addEventListener("DOMMouseScroll", mousewheelHandler, false);
         }else{
             oSection1.addEventListener("mousewheel", mousewheelHandler, false);
-            // oSection2.addEventListener("mousewheel", mousewheelHandler, false);
-
-    }
-}
-getwheel();
-
-
-//风琴效果
-for(var i=1;i<aLi.length;i++){
-    aLi[i].style.left=620-(aLi.length-i)%aLi.length*80+'px';
-}
-for(var i=0;i<aLi.length;i++){
-        (function(index){
-            aLi[i].onmouseover=function(){
-            // addClass(aLi[i], 'switch')
-            for(var i=0;i<aLi.length;i++){
-                    if(i<=index){
-                        aLi[i].style.left=i*80+'px';
-                    }else{
-                        aLi[i].style.left=620-(aLi.length-i)*80+'px';
-                    }
-                }
-            };
-        })(i);
-}
-
-//上拉吸顶条效果
-    window.onscroll=function(){
-
-        var scrollT = document.documentElement.scrollTop||document.body.scrollTop;
-    // console.log(scrollT)
-
-        if(scrollT>greetingsTop+110){
-            greetingsDiv.style.display = 'none';
-            bg_2.style.position='fixed';
-            bg_2.style.top=0;
-            bg_2.style.left=0;
-            place_holder.style.display = 'block'
-        }else{
-            bg_2.style.position='';
-            greetingsDiv.style.display = 'block';
-            place_holder.style.display = 'none';
-        }
+            oSection2.addEventListener("mousewheel", mousewheelHandler, false);
     }
 
-    //锚点js平滑滚动
-    function intval(v)
+// 转换为数字
+function intval(v)
 {
     v = parseInt(v);
     return isNaN(v) ? 0 : v;
@@ -180,6 +113,7 @@ function getScroll()
 // 锚点(Anchor)间平滑跳转
 function scroller(el, duration)
 {
+    isScroll = true;
     if(typeof el != 'object') { el = document.getElementById(el); }
  
     if(!el) return;
@@ -205,4 +139,45 @@ function scroller(el, duration)
     };
     z.scroll = function (t, l){window.scrollTo(l, t)};
     z.timer = window.setInterval(function(){z.step();},13);
+    
+    setTimeout(function(){isScroll = false}, 700);
+    
 }
+
+//风琴效果
+for(var i=1;i<aLi.length;i++){
+    aLi[i].style.left=620-(aLi.length-i)%aLi.length*80+'px';
+}
+for(var i=0;i<aLi.length;i++){
+        (function(index){
+            aLi[i].onmouseover=function(){
+            // addClass(aLi[i], 'switch')
+            for(var i=0;i<aLi.length;i++){
+                    if(i<=index){
+                        aLi[i].style.left=i*80+'px';
+                    }else{
+                        aLi[i].style.left=620-(aLi.length-i)*80+'px';
+                    }
+                }
+            };
+        })(i);
+}
+
+//上拉吸顶条效果
+    window.onscroll=function(){
+
+        var scrollT = document.documentElement.scrollTop||document.body.scrollTop;
+    // console.log(scrollT)
+
+        if(scrollT>greetingsTop+110){
+            greetingsDiv.style.display = 'none';
+            bg_2.style.position='fixed';
+            bg_2.style.top=0;
+            bg_2.style.left=0;
+            place_holder.style.display = 'block'
+        }else{
+            bg_2.style.position='';
+            greetingsDiv.style.display = 'block';
+            place_holder.style.display = 'none';
+        }
+    }
