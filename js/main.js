@@ -1,13 +1,21 @@
+//上下滚动翻页
 var oSection1 = document.getElementById("section1");
 var oSection2 = document.getElementById("section2");
+var isScroll = false;//是否正在下拉
+
+//风琴效果
 var oFlow1 = document.getElementById('s4-flow-1');
 var aLi = oFlow1.getElementsByTagName('li');
+
+//吸顶条
 var bg_2 = document.getElementById("bg-2");
 var place_holder = document.getElementById("place_holder");
 var greetingsDiv = document.getElementById("greetings");
 var greetingsTop = greetingsDiv.offsetTop;
 
-var isScroll = false;//是否正在下拉
+//音乐开关
+var oMusic = document.getElementById("music");
+var oAudio = document.getElementsByTagName('audio')[0];
 
 function hasClass(obj, cls) {  
     return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
@@ -171,3 +179,14 @@ for(var i=0;i<aLi.length;i++){
             place_holder.style.display = 'none';
         }
     }
+
+//控制音乐开关 
+oMusic.addEventListener('click',function(event){
+    if(oAudio.paused){
+        removeClass(oMusic,'music-off')
+        oAudio.play();
+    }else{
+        addClass(oMusic,'music-off')
+        oAudio.pause();
+    }
+},false)
