@@ -211,20 +211,14 @@ oMusic.addEventListener('click',function(event){
                 option = {
     title: {
         x: 'center',
-        text: 'ECharts例子个数统计',
-        subtext: 'Rainbow bar example',
-        link: 'http://echarts.baidu.com/doc/example.html'
+        text: '部分前端技术掌握度一览',
+        subtext: '0未接触;2了解;4掌握;6熟练;8精通;10专家',
+        subtextStyle: {
+            color: '#fff'          // 副标题文字颜色
+        }
     },
     tooltip: {
         trigger: 'item'
-    },
-    toolbox: {
-        show: true,
-        feature: {
-            dataView: {show: true, readOnly: false},
-            restore: {show: true},
-            saveAsImage: {show: true}
-        }
     },
     calculable: true,
     grid: {
@@ -236,27 +230,28 @@ oMusic.addEventListener('click',function(event){
         {
             type: 'category',
             show: false,
-            data: ['Line', 'Bar', 'Scatter', 'K', 'Pie', 'Radar', 'Chord', 'Force', 'Map', 'Gauge', 'Funnel']
+            data: ['HTML', 'CSS', 'Js', 'jQuery', 'React', 'Augular', 'Node', 'WebPack', 'Gulp']
         }
     ],
     yAxis: [
         {
             type: 'value',
-            show: false
+            show: true,
+            data:['0','2','4','6','8','10']
         }
     ],
     series: [
         {
-            name: 'ECharts例子个数统计',
+            name: '前端技能',
             type: 'bar',
             itemStyle: {
                 normal: {
                     color: function(params) {
                         // build a color map as your need.
                         var colorList = [
-                          '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
-                           '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
-                           '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'
+                          '#e0cdbf','#fff','#c5ebec','#e0cdbf','#fff',
+                           '#c5ebec','#e0cdbf','#fff','#c5ebec','#e0cdbf',
+                           '#fff','#c5ebec'
                         ];
                         return colorList[params.dataIndex]
                     },
@@ -267,31 +262,32 @@ oMusic.addEventListener('click',function(event){
                     }
                 }
             },
-            data: [12,21,10,4,12,5,6,5,25,23,7],
-            markPoint: {
-                tooltip: {
-                    trigger: 'item',
-                    backgroundColor: 'rgba(0,0,0,0)',
-                    formatter: function(params){
-                        return '<img src="' 
-                                + params.data.symbol.replace('image://', '')
-                                + '"/>';
-                    }
-                },
-                data: [
-                    {xAxis:0, y: 350, name:'Line', symbolSize:20, symbol: 'img/html.png'},
-                    {xAxis:1, y: 350, name:'Bar', symbolSize:20, symbol: 'img/css.png'},
-                    {xAxis:2, y: 350, name:'Scatter', symbolSize:20, symbol: 'img/js.png'},
-                    {xAxis:3, y: 350, name:'K', symbolSize:20, symbol: 'img/jquery.png'},
-                    {xAxis:4, y: 350, name:'Pie', symbolSize:20, symbol: 'img/angular.png'},
-                    {xAxis:5, y: 350, name:'Radar', symbolSize:20, symbol: 'img/react.png'},
-                    {xAxis:6, y: 350, name:'Chord', symbolSize:20, symbol: 'img/nodejs.png'},
-                    {xAxis:7, y: 350, name:'Force', symbolSize:20, symbol: 'img/webpack.png'},
-                    {xAxis:8, y: 350, name:'Map', symbolSize:20, symbol: 'img/gulp.png'},
-                    {xAxis:9, y: 350, name:'Gauge', symbolSize:20, symbol: 'img/.png'},
-                    {xAxis:10, y: 350, name:'Funnel', symbolSize:20, symbol: 'img/.png'},
-                ]
-            }
+            data: [8.5,8,7,6,7,6,6,6,6,6],
+            
+            // markPoint: {
+            //     // tooltip: {
+            //     //     trigger: 'item',
+            //     //     backgroundColor: 'rgba(0,0,0,0)',
+            //     //     // formatter: function(params){
+            //     //     //     return '<img src="' 
+            //     //     //             + params.data.symbol.replace('image://', '')
+            //     //     //             + '"/>';
+            //     //     // }
+            //     // },
+            //     data: [
+            //         {xAxis:0, y: 350, name:'Line', },
+            //         {xAxis:1, y: 350, name:'Bar', },
+            //         {xAxis:2, y: 350, name:'Scatter', },
+            //         {xAxis:3, y: 350, name:'K', },
+            //         {xAxis:4, y: 350, name:'Pie', },
+            //         {xAxis:5, y: 350, name:'Radar', },
+            //         {xAxis:6, y: 350, name:'Chord', },
+            //         {xAxis:7, y: 350, name:'Force',},
+            //         {xAxis:8, y: 350, name:'Map',},
+            //         {xAxis:9, y: 350, name:'Gauge', },
+            //         {xAxis:10, y: 350, name:'Funnel', },
+            //     ]
+            // }
         }
     ]
 };

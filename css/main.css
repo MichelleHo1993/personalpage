@@ -281,6 +281,9 @@ body{
  .displaynone{
  	display: none;
  }
+ .displayblock{
+ 	display: block;
+ }
 .section3>div:first-child,.section3>div:last-child{
 	background: #e3d2c5;
 }
@@ -464,4 +467,26 @@ body{
 }
 .cube-li h4{
 	text-align: center;
+}
+@keyframes flash {
+	from, 50%, to {
+		opacity: 1;
+	}
+	25%, 75% {
+		opacity: 0;
+	}
+}
+.flash {
+	-webkit-animation:flash  2s flash;
+	animation:flash  2s infinite;
+	-webkit-animation-name: flash;
+	animation-name: flash;
+}
+.flashdiv{
+	width:20px;
+	height:20px;
+	background-color: #fff;
+	position: absolute;
+	top: 5px;
+	left: 5px;
 }
