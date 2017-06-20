@@ -29,7 +29,7 @@ function removeClass(obj, cls) {
     if (hasClass(obj, cls)) {  
         var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');  
         obj.className = obj.className.replace(reg, ' ');  
-    }  
+    }   
 }  
 
 function toggleClass(obj,cls){  
@@ -47,11 +47,11 @@ function toggleClass(obj,cls){
         var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
         // console.log(delta > 0 ? "向上滚动" : "向下滚动");
         if(delta<0){
-            console.log('<0',delta)       
+            // console.log('<0',delta)       
             scroller('section2', 500)
 
         }else{
-            console.log('>0',delta)
+            // console.log('>0',delta)
             scroller('section1', 500)
         }
     }
