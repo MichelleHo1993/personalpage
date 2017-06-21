@@ -17,15 +17,15 @@ var greetingsTop = greetingsDiv.offsetTop;
 var oMusic = document.getElementById("music");
 var oAudio = document.getElementsByTagName('audio')[0];
 
-function hasClass(obj, cls) {  
+var hasClass = function(obj, cls) {  
     return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
 }  
   
-function addClass(obj, cls) {  
+var addClass = function(obj, cls) {  
     if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
 }  
   
-function removeClass(obj, cls) {  
+var removeClass = function(obj, cls) {  
     if (hasClass(obj, cls)) {  
         var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');  
         obj.className = obj.className.replace(reg, ' ');  
@@ -296,3 +296,17 @@ oMusic.addEventListener('click',function(event){
                 myChart.setOption(option); 
             }
         );
+
+//给钱
+var money_button = document.getElementById("givemoney");
+var money_img = document.getElementById("moneyimg");
+var moneyCls = money_img.getAttribute('class');
+money_button.onmouseover = function(){
+    money_img.className = moneyCls+' '+ 'slideInLeft';
+    // money_img.setAttribute('class',moneyCls+' '+ 'slideInLeft')
+    // addClass('money_img','slideInLeft')
+}
+money_button.onmouseout = function(){
+    money_img.className = moneyCls;
+
+}
