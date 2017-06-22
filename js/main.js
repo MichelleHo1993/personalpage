@@ -17,28 +17,6 @@ var greetingsTop = greetingsDiv.offsetTop;
 var oMusic = document.getElementById("music");
 var oAudio = document.getElementsByTagName('audio')[0];
 
-var hasClass = function(obj, cls) {  
-    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
-}  
-  
-var addClass = function(obj, cls) {  
-    if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
-}  
-  
-var removeClass = function(obj, cls) {  
-    if (hasClass(obj, cls)) {  
-        var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');  
-        obj.className = obj.className.replace(reg, ' ');  
-    }   
-}  
-
-function toggleClass(obj,cls){  
-    if(hasClass(obj,cls)){  
-        removeClass(obj, cls);  
-    }else{  
-        addClass(obj, cls);  
-    }  
-}  
 
 
 //首屏下拉
@@ -106,6 +84,7 @@ function getScroll()
         h = document.body.scrollHeight;
     }
     return { t: t, l: l, w: w, h: h };
+
 }
  
 // 锚点(Anchor)间平滑跳转
@@ -162,23 +141,24 @@ for(var i=0;i<aLi.length;i++){
 }
 
 //上拉吸顶条效果
-    window.onscroll=function(){
+window.onscroll=function(){
 
-        var scrollT = document.documentElement.scrollTop||document.body.scrollTop;
-    // console.log(scrollT)
+    var scrollT = document.documentElement.scrollTop||document.body.scrollTop;
+// console.log(scrollT)
 
-        if(scrollT>greetingsTop+110){
-            greetingsDiv.style.display = 'none';
-            bg_2.style.position='fixed';
-            bg_2.style.top=0;
-            bg_2.style.left=0;
-            place_holder.style.display = 'block'
-        }else{
-            bg_2.style.position='';
-            greetingsDiv.style.display = 'block';
-            place_holder.style.display = 'none';
-        }
+    if(scrollT>greetingsTop+110){
+        greetingsDiv.style.display = 'none';
+        bg_2.style.position='fixed';
+        bg_2.style.top=0;
+        bg_2.style.left=0;
+        place_holder.style.display = 'block'
+    }else{
+        bg_2.style.position='';
+        greetingsDiv.style.display = 'block';
+        place_holder.style.display = 'none';
     }
+
+}
 
 //控制音乐开关 
 oMusic.addEventListener('click',function(event){
@@ -209,88 +189,88 @@ oMusic.addEventListener('click',function(event){
                 var myChart = ec.init(document.getElementById('main')); 
                 
                 option = {
-    title: {
-        x: 'center',
-        text: '部分前端技术掌握度一览',
-        subtext: '0未接触;2了解;4掌握;6熟练;8精通;10专家',
-        subtextStyle: {
-            color: '#fff'          // 副标题文字颜色
-        }
-    },
-    tooltip: {
-        trigger: 'item'
-    },
-    calculable: true,
-    grid: {
-        borderWidth: 0,
-        y: 80,
-        y2: 60
-    },
-    xAxis: [
-        {
-            type: 'category',
-            show: false,
-            data: ['HTML', 'CSS', 'Js', 'jQuery', 'React', 'Augular', 'Node', 'WebPack', 'Gulp']
-        }
-    ],
-    yAxis: [
-        {
-            type: 'value',
-            show: true,
-            data:['0','2','4','6','8','10']
-        }
-    ],
-    series: [
-        {
-            name: '前端技能',
-            type: 'bar',
-            itemStyle: {
-                normal: {
-                    color: function(params) {
-                        // build a color map as your need.
-                        var colorList = [
-                          '#e0cdbf','#fff','#c5ebec','#e0cdbf','#fff',
-                           '#c5ebec','#e0cdbf','#fff','#c5ebec','#e0cdbf',
-                           '#fff','#c5ebec'
-                        ];
-                        return colorList[params.dataIndex]
+                    title: {
+                        x: 'center',
+                        text: '部分前端技术掌握度一览',
+                        subtext: '0未接触;2了解;4掌握;6熟练;8精通;10专家',
+                        subtextStyle: {
+                            color: '#fff'          // 副标题文字颜色
+                        }
                     },
-                    label: {
-                        show: true,
-                        position: 'top',
-                        formatter: '{b}\n{c}'
-                    }
-                }
-            },
-            data: [8.5,8,7,6,7,6,6,6,6,6],
+                    tooltip: {
+                        trigger: 'item'
+                    },
+                    calculable: true,
+                    grid: {
+                        borderWidth: 0,
+                        y: 80,
+                        y2: 60
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            show: false,
+                            data: ['HTML', 'CSS', 'Js', 'jQuery', 'React', 'Augular', 'Node', 'WebPack', 'Gulp']
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                            show: true,
+                            data:['0','2','4','6','8','10']
+                        }
+                    ],
+                    series: [
+                        {
+                            name: '前端技能',
+                            type: 'bar',
+                            itemStyle: {
+                                normal: {
+                                    color: function(params) {
+                                        // build a color map as your need.
+                                        var colorList = [
+                                          '#e0cdbf','#fff','#c5ebec','#e0cdbf','#fff',
+                                           '#c5ebec','#e0cdbf','#fff','#c5ebec','#e0cdbf',
+                                           '#fff','#c5ebec'
+                                        ];
+                                        return colorList[params.dataIndex]
+                                    },
+                                    label: {
+                                        show: true,
+                                        position: 'top',
+                                        formatter: '{b}\n{c}'
+                                    }
+                                }
+                            },
+                            data: [8.5,8,7,6,7,6,6,6,6,6],
             
-            // markPoint: {
-            //     // tooltip: {
-            //     //     trigger: 'item',
-            //     //     backgroundColor: 'rgba(0,0,0,0)',
-            //     //     // formatter: function(params){
-            //     //     //     return '<img src="' 
-            //     //     //             + params.data.symbol.replace('image://', '')
-            //     //     //             + '"/>';
-            //     //     // }
-            //     // },
-            //     data: [
-            //         {xAxis:0, y: 350, name:'Line', },
-            //         {xAxis:1, y: 350, name:'Bar', },
-            //         {xAxis:2, y: 350, name:'Scatter', },
-            //         {xAxis:3, y: 350, name:'K', },
-            //         {xAxis:4, y: 350, name:'Pie', },
-            //         {xAxis:5, y: 350, name:'Radar', },
-            //         {xAxis:6, y: 350, name:'Chord', },
-            //         {xAxis:7, y: 350, name:'Force',},
-            //         {xAxis:8, y: 350, name:'Map',},
-            //         {xAxis:9, y: 350, name:'Gauge', },
-            //         {xAxis:10, y: 350, name:'Funnel', },
-            //     ]
-            // }
-        }
-    ]
-};
+                            // markPoint: {
+                            //     // tooltip: {
+                            //     //     trigger: 'item',
+                            //     //     backgroundColor: 'rgba(0,0,0,0)',
+                            //     //     // formatter: function(params){
+                            //     //     //     return '<img src="' 
+                            //     //     //             + params.data.symbol.replace('image://', '')
+                            //     //     //             + '"/>';
+                            //     //     // }
+                            //     // },
+                            //     data: [
+                            //         {xAxis:0, y: 350, name:'Line', },
+                            //         {xAxis:1, y: 350, name:'Bar', },
+                            //         {xAxis:2, y: 350, name:'Scatter', },
+                            //         {xAxis:3, y: 350, name:'K', },
+                            //         {xAxis:4, y: 350, name:'Pie', },
+                            //         {xAxis:5, y: 350, name:'Radar', },
+                            //         {xAxis:6, y: 350, name:'Chord', },
+                            //         {xAxis:7, y: 350, name:'Force',},
+                            //         {xAxis:8, y: 350, name:'Map',},
+                            //         {xAxis:9, y: 350, name:'Gauge', },
+                            //         {xAxis:10, y: 350, name:'Funnel', },
+                            //     ]
+                            // }
+                        }
+                    ]
+                };
         
                 // 为echarts对象加载数据 
                 myChart.setOption(option); 
@@ -302,11 +282,28 @@ var money_button = document.getElementById("givemoney");
 var money_img = document.getElementById("moneyimg");
 var moneyCls = money_img.getAttribute('class');
 money_button.onmouseover = function(){
-    money_img.className = moneyCls+' '+ 'slideInLeft';
-    // money_img.setAttribute('class',moneyCls+' '+ 'slideInLeft')
-    // addClass('money_img','slideInLeft')
+    money_img.setAttribute('class','fadeIn')
 }
 money_button.onmouseout = function(){
-    money_img.className = moneyCls;
-
+    money_img.className = 'fadeOut';
 }
+
+//qq聊天链接
+var qqChat = function(){
+    window.location.assign("tencent://message/?uin=597849011&Site=http://vps.shuidazhe.com&Menu=yes")
+}
+
+//导航闪烁
+var section3 = document.getElementById("section3");
+// document.body.scrollTop;
+
+// var auchorTop = $("#anchor").css("top");  
+//         auchorTop = Number(auchorTop.substring(0, anchorTop.indexOf("p")));  //首先在监听器外部记录某id=anchor的标签的初始位置  
+//         window.onscroll = function () {  
+//             var top = document.documentElement.scrollTop || document.body.scrollTop;  
+//             $("#anchor").css("top", anchorTop + top + "px");  
+//         }
+
+// window.onscroll = function(){
+//     
+// }
